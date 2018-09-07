@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/main/**/*.test.ts",
+    "src/renderer",
+    "test",
+    "webpack"
+  ],
+  "include": [
+    "src/main/**/*",
+    "src/common/**/*.ts"
+  ]
+}

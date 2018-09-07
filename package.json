@@ -1,0 +1,35 @@
+{
+  "name": "playscape-desktop",
+  "version": "0.0.1",
+  "description": "A browser tailored for the decentralised web.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/kieranroneill/playscape-desktop.git",
+  "author": "Kieran O'Neill <kieranroneill@googlemail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "./bin/build.sh",
+    "start": "npm run build && electron ./dist/main/index.js"
+  },
+  "dependencies": {
+    "electron": "^2.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "autoprefixer": "^9.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
+    "file-loader": "^2.0.0",
+    "handlebars": "^4.0.12",
+    "handlebars-loader": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^3.0.0",
+    "ts-loader": "^5.0.0",
+    "typescript": "^3.0.3",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  }
+}
