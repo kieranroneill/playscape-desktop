@@ -18,7 +18,7 @@ export default {
         main: resolve(srcPath, 'index.ts'),
     },
 
-    mode: process.env.NODE_ENV,
+    mode: (process.env.NODE_ENV || 'development'),
 
     module: {
         rules: [
@@ -129,5 +129,5 @@ export default {
             '.ts',
             '.tsx'
         ],
-    }
+    },
 };
