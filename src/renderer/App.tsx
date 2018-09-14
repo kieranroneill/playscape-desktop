@@ -6,7 +6,8 @@ import { injectGlobal } from 'styled-components';
 // Components.
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import Main from './components/Main';
-import { Omnibox } from './components/Omnibox';
+import Omnibox from './components/Omnibox';
+import { Shell } from './components/Shell';
 
 // Store.
 import {
@@ -58,11 +59,6 @@ injectGlobal`
     margin: 0;
     height: 100vh;
     width: 100%;
-  }
-  
-  #root {
-    display: flex;
-    flex-direction: column;
   }
   
   h1,
@@ -124,21 +120,15 @@ injectGlobal`
 }
 `;
 
-// const Wrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   flex-wrap: nowrap;
-//   height: 100%;
-//   width: 100%;
-// `;
-
 const store: Store<ApplicationState> = configureStore();
 
 export const App: React.SFC = () => (
     <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-            <Omnibox />
-            <Main />
+            <Shell>
+                <Omnibox />
+                <Main />
+            </Shell>
         </MuiThemeProvider>
     </Provider>
 );
