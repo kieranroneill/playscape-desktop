@@ -1,4 +1,5 @@
 import CleanPlugin from 'clean-webpack-plugin';
+import createElectronReloadWebpackPlugin from 'electron-reload-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import {
     join,
@@ -11,8 +12,13 @@ const srcPath = join(__dirname, '..', 'src', 'renderer');
 const title = 'Playscape';
 const uriLimit = 65000;
 
+const ElectronReloadWebpackPlugin = createElectronReloadWebpackPlugin({
+    path: join(__dirname, '..', 'dist', 'main', 'index.js'),
+    logLevel: 0
+});
+
 export default {
-    devtool: false,
+    devtool: 'source-map',
 
     entry: {
         main: resolve(srcPath, 'index.ts'),
@@ -37,6 +43,7 @@ export default {
                     configFile: join(__dirname, '..', 'tsconfig.renderer.json'),
                 }
             },
+
             // Assets.
             {
                 test: /\.gif/,
@@ -104,9 +111,11 @@ export default {
 
     plugins: [
         new CleanPlugin([distPath], { root: join(__dirname, '..') }),
+        ElectronReloadWebpackPlugin('electron-renderer'),
         new HtmlWebpackPlugin({
             title,
             inject: 'body',
+            isDevelopment: (process.env.NODE_ENV !== 'production'),
             template: resolve(srcPath, 'index.hbs'),
         }),
         new webpack.DefinePlugin({
